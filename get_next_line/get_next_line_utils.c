@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 04:42:44 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/21 22:59:35 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/22 06:45:04 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *str)
 	size_t	i;
 
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (str[i] )
 		i++;
 	return (i);
 }
