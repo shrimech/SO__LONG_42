@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 07:10:31 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/22 09:15:34 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/22 21:00:53 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,94 @@ typedef struct s_game
     int colect;
     int exit;
     int player;
+    int p_x;
+    int p_y;
 }t_game;
+
+void	find_player_pos(t_game *game)
+{
+	int x = 0;
+	game->p_x = 0;
+	game->p_y = 0;
+	int y;
+	while (x < game->high)
+	{
+		y = 0;
+		while (y < game->width)
+		{
+			if (game->map[x][y] == 'P')
+			{
+				game->p_y = y;
+				game->p_x = x;
+				return ;
+			}
+			y++;
+		}
+		x++;
+	}
+}
+
+void	flood_fill(char **map, int x, int y)
+{
+	if (map[x][y] == '1' || map[x][y] == 'X')
+		return ;
+	map[x][y] = 'X';
+	flood_fill(map, x + 1, y);
+	flood_fill(map, x - 1, y);
+	flood_fill(map, x, y + 1);
+	flood_fill(map, x, y - 1);
+}
+
+char	**duplicate_map(t_game *game)
+{
+	int		i;
+	char	**copy;
+
+	i = 0;
+	copy = malloc(sizeof(char *) * (game->width + 1));
+	if (!copy)
+		return (NULL);
+	while (game->map[i])
+	{
+		copy[i] = ft_strdup(game->map[i]);
+		if (!copy[i])
+		{
+			while (--i >= 0)
+				free(copy[i]);
+			free(copy);
+			return (NULL);
+		}
+		i++;
+	}
+	copy[i] = NULL;
+	return (copy);
+}
+
+int check_oporunity_to_C_E(t_game *game)
+{
+    int i =0;
+    int j;
+    int c = 0;
+    char **coppy;
+    find_player_pos(game);
+    coppy = duplicate_map(game);
+    flood_fill(coppy,game->p_x,game->p_y);
+    while (i < game->high)
+    {
+        j = 0;
+        while (j < game->width)
+        {
+            if (coppy[i][j] == 'C' || coppy[i][j] == 'E')
+                c++;
+            j++;
+        }
+        i++;
+    }
+    if (c != 0)
+        return(0);
+    return(1);
+    
+}
 
 int elements_count(t_game *game)
 {
@@ -93,6 +180,8 @@ int check_map(char *av, t_game *game)
     fd = open(av , O_RDONLY);
     //game->map = malloc(countnewline(fd))
     char *line = get_next_line(fd);
+    if (!line)
+        return(0);
     game->width = gt_strlen(line);
     while(line)
     {
@@ -125,9 +214,9 @@ int main(int ac,char **av)
     if (ac == 2)
     {
         game_init(game);
-        if (check_map(av[1],game) == 0 || map_elements(game) == 0 || elements_count(game) == 0)
+        if (check_map(av[1],game) == 0 || map_elements(game) == 0 || elements_count(game) == 0 || check_oporunity_to_C_E(game) == 0)
             return(write(1,"ERROR : invalid map\n",20),0);
-        printf("%d\n",game->high);
+        printf("(%d,%d)\n",game->p_x,game->p_y);
     }
     else
         write(1,"Error: enter <./so_long> <map.ber>",34);
