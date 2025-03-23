@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 07:10:31 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/23 08:07:14 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/23 08:14:13 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,3 +275,4 @@ int	main(int ac, char **av)
 	else
 		write(1, "Error: enter <./so_long> <map.ber>", 34);
 }
+// okok
