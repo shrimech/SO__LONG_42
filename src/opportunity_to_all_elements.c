@@ -6,11 +6,12 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 07:20:53 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/24 08:35:51 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/24 08:43:08 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../includes/so_long.h"
+#include "../includes/so_long.h"
+
 void	find_player_pos(t_game *game)
 {
 	int	x;
@@ -106,5 +107,5 @@ void	game_init(t_game *game)
 	game->exit = 0;
 	game->player = 0;
 	game->high = 0;
-    game->map = NULL;
+	game->map = NULL;
 }
