@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:20:29 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/27 18:35:29 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/28 01:49:45 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,34 @@ void	render_map(t_game *game)
 		j = 0;
 		while(game->map[i][j])
 		{
-			if (game->map[i][j] = '0')
-				mlx_put_image_to_window(game->mlx,game->mlx_win,game->img_empty, i*32,j*32);
-			if (game->map[i][j] = '1')
-				mlx_put_image_to_window(game->mlx,game->mlx_win,game->img_wall, i*32,j*32);
-			if (game->map[i][j] = 'P')
-				mlx_put_image_to_window(game->mlx,game->mlx_win,game->img_player, i*32,j*32);
-			if (game->map[i][j] = 'E')
-				mlx_put_image_to_window(game->mlx,game->mlx_win,game->img_exit, i*32,j*32);
-			if (game->map[i][j] = 'C')
-				mlx_put_image_to_window(game->mlx,game->mlx_win,game->img_collectib, i*32,j*32);
+			if (game->map[i][j] == '0')
+				mlx_put_image_to_window(game->mlx,game->mlx_win,game->img_empty, j*32,i*32);
+			if (game->map[i][j] =='1')
+				mlx_put_image_to_window(game->mlx,game->mlx_win,game->img_wall, j*32,i*32);
+			if (game->map[i][j] == 'P')
+				mlx_put_image_to_window(game->mlx,game->mlx_win,game->img_player, j*32,i*32);
+			if (game->map[i][j] == 'E')
+				mlx_put_image_to_window(game->mlx,game->mlx_win,game->img_exit, j*32,i*32);
+			if (game->map[i][j] == 'C')
+				mlx_put_image_to_window(game->mlx,game->mlx_win,game->img_collectib, j*32,i*32);
 			j++;
 		}
 		i++;
 	}
+}
+
+int	key_hook(int key, t_game *game)
+{
+	if(key == 65307)
+		exit(0);
+	if(key == 119 || key == 65362)
+		//up
+	if(key == 97 || key == 65361)
+		//left
+	if(key == 115 || key == 65364)
+		//down
+	if(key == 100 || key == 65363)
+		//right
+	render_map(game);
+	return (0);
 }

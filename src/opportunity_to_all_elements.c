@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 07:20:53 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/24 08:43:08 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/28 01:10:22 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ void	find_player_pos(t_game *game)
 	}
 }
 
-void	flood_fill(char **map, int x, int y)
+void	flood_fill(char **map, int x, int y,int i,int j)
 {
-	if (map[x][y] == '1' || map[x][y] == 'X')
+	if (x < 0 || x >= j || y < 0 || y >= i || map[x][y] == '1' || map[x][y] == 'X')
 		return ;
 	map[x][y] = 'X';
-	flood_fill(map, x + 1, y);
-	flood_fill(map, x - 1, y);
-	flood_fill(map, x, y + 1);
-	flood_fill(map, x, y - 1);
+	flood_fill(map, x + 1, y,i,j);
+	flood_fill(map, x - 1, y,i,j);
+	flood_fill(map, x, y + 1,i,j);
+	flood_fill(map, x, y - 1,i,j);
 }
 
 char	**duplicate_map(t_game *game)
@@ -54,7 +54,7 @@ char	**duplicate_map(t_game *game)
 	char	**copy;
 
 	i = 0;
-	copy = malloc(sizeof(char *) * (game->width + 1));
+	copy = malloc(sizeof(char *) * (game->high + 1));
 	if (!copy)
 		return (NULL);
 	while (game->map[i])
@@ -84,7 +84,7 @@ int	check_oporunity_to_col_exit(t_game *game)
 	c = 0;
 	find_player_pos(game);
 	coppy = duplicate_map(game);
-	flood_fill(coppy, game->p_x, game->p_y);
+	flood_fill(coppy, game->p_x, game->p_y,game->width,game->high);
 	while (i < game->high)
 	{
 		j = 0;

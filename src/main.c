@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 07:10:31 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/27 18:21:31 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/28 01:36:58 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ int	main(int ac, char **av)
 			return (write(1, "ERROR : invalid map\n", 20), 0);
 		printf("(%d,%d)\n", game.p_x, game.p_y);
 		game.mlx = mlx_init();
-		game.mlx_win = mlx_new_window(game.mlx,game.width*64,game.high*64,"so_long");
+		game.mlx_win = mlx_new_window(game.mlx,game.width*32,game.high*32,"so_long");
 		texture(&game);
 		render_map(&game);
+		mlx_key_hook(game.mlx_win, key_hook, &game);
 		mlx_loop(game.mlx);
 	}
 	else
