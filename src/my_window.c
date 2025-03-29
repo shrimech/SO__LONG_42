@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:20:29 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/28 01:49:45 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/29 05:55:13 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,25 @@ void	render_map(t_game *game)
 
 int	key_hook(int key, t_game *game)
 {
+	static int i;
+	
 	if(key == 65307)
 		exit(0);
 	if(key == 119 || key == 65362)
+		go_up(game);
 		//up
 	if(key == 97 || key == 65361)
-		//left
+	{
+		go_left(game);		
+	}	//left
 	if(key == 115 || key == 65364)
+		go_down(game);
 		//down
 	if(key == 100 || key == 65363)
+		go_right(game);
 		//right
-	render_map(game);
+	if(i != game->count_moves)
+		printf("%d\n", game->count_moves);
+	i = game->count_moves;
 	return (0);
 }

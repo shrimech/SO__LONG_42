@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 07:10:31 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/28 01:36:58 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/29 05:34:43 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,16 @@
 // }
 
 #include <stdio.h>
+int ft_exit()
+{
+	exit(0);
+	return 0;
+}
 
 int	main(int ac, char **av)
 {
 	t_game	game;
-	int		i;
 
-	i = 0;
 	if (ac == 2)
 	{
 		game_init(&game);
@@ -43,12 +46,13 @@ int	main(int ac, char **av)
 			|| elements_count(&game) == 0 
 			|| check_oporunity_to_col_exit(&game) == 0)
 			return (write(1, "ERROR : invalid map\n", 20), 0);
-		printf("(%d,%d)\n", game.p_x, game.p_y);
+		printf("(%d,%d,%d)\n", game.colect,game.p_x, game.p_y);
 		game.mlx = mlx_init();
 		game.mlx_win = mlx_new_window(game.mlx,game.width*32,game.high*32,"so_long");
 		texture(&game);
 		render_map(&game);
 		mlx_key_hook(game.mlx_win, key_hook, &game);
+		mlx_hook(game.mlx_win, 17, 0, ft_exit, &game);
 		mlx_loop(game.mlx);
 	}
 	else
