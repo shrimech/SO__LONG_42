@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 07:20:53 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/29 05:43:51 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/30 01:16:34 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	check_oporunity_to_col_exit(t_game *game)
 		}
 		i++;
 	}
+	free_map(coppy);
 	if (c != 0)
 		return (0);
 	return (1);

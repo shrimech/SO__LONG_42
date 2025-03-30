@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 07:10:31 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/29 05:34:43 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/30 01:27:30 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 		if (check_map(av[1], &game) == 0 || map_elements(&game) == 0
 			|| elements_count(&game) == 0 
 			|| check_oporunity_to_col_exit(&game) == 0)
-			return (write(1, "ERROR : invalid map\n", 20), 0);
+			return ((free_game_map(&game),write(1, "ERROR : invalid map\n", 20), 0));
 		printf("(%d,%d,%d)\n", game.colect,game.p_x, game.p_y);
 		game.mlx = mlx_init();
 		game.mlx_win = mlx_new_window(game.mlx,game.width*32,game.high*32,"so_long");

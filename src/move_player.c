@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 18:02:54 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/29 06:26:03 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/30 01:26:15 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	go_up(t_game *game)
 				printf("*            CONGRATULATIONS            *\n");
 				printf("*               YOU WON in %d!          *\n",game->count_moves);
 				printf("*****************************************\n\n");
-				exit(0);
+				exit((free_game_map(game),free_textures(game),0));
 			}
 			game->exit_x = game->p_x - 1;
 			game->exit_y = game->p_y;
@@ -53,7 +53,7 @@ void	go_left(t_game *game)
 				printf("*            CONGRATULATIONS            *\n");
 				printf("*               YOU WON in %d!          *\n",game->count_moves);
 				printf("*****************************************\n\n");
-				exit(0);
+				exit((free_game_map(game),free_textures(game),0));
 			}
 			game->exit_x = game->p_x;
 			game->exit_y = game->p_y - 1;
@@ -82,7 +82,7 @@ void	go_down(t_game *game)
 				printf("*            CONGRATULATIONS            *\n");
 				printf("*               YOU WON in %d!          *\n",game->count_moves);
 				printf("*****************************************\n\n");
-				exit(0);
+				exit((free_game_map(game),free_textures(game),0));
 			}
 			game->exit_x = game->p_x + 1;
 			game->exit_y = game->p_y;
@@ -111,7 +111,7 @@ void	go_right(t_game *game)
 				printf("*            CONGRATULATIONS            *\n");
 				printf("*               YOU WON in %d!          *\n",game->count_moves);
 				printf("*****************************************\n\n");
-				exit(0);
+				exit((free_game_map(game),free_textures(game),0));
 			}
 			game->exit_x = game->p_x;
 			game->exit_y = game->p_y + 1;
