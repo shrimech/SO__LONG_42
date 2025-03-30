@@ -6,14 +6,14 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 23:51:06 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/18 07:09:47 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/30 06:42:32 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1
 # endif
 
 # include <fcntl.h> //khesni nhyeed hadi 

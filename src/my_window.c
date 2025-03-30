@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:20:29 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/29 05:55:13 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/30 07:23:22 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	key_hook(int key, t_game *game)
 	static int i;
 	
 	if(key == 65307)
-		exit(0);
+		exit((free_game_map(game),free_textures(game),pause_mlx(game),0));
 	if(key == 119 || key == 65362)
 		go_up(game);
 		//up

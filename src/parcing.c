@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 07:26:05 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/29 05:36:26 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/30 07:07:22 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,19 @@ int	check_map(char *av, t_game *game)
 	while (line)
 	{
 		game->map[i] = ft_strdup(line);
-		if (gt_strlen(line) != game->width || game->map[i][0] != '1'
-			|| game->map[i][gt_strlen(line) - 1] != '1')
+		free(line);
+		line = NULL;
+		if (gt_strlen(game->map[i]) != game->width || game->map[i][0] != '1'
+			|| game->map[i][gt_strlen(game->map[i]) - 1] != '1')
+		{
+			while (i >= 0)
+			{
+				free(game->map[i]);
+				i--;
+			}
+			free(game->map);
 			return (0);
+		}
 		line = get_next_line(fd);
 		i++;
 	}

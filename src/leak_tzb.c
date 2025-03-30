@@ -6,11 +6,18 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 00:56:33 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/30 01:09:20 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/30 05:21:56 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void pause_mlx(t_game *game)
+{
+    mlx_destroy_window(game->mlx, game->mlx_win);  // Destroy the window
+    mlx_destroy_display(game->mlx);          // Close the X11 connection
+    free(game->mlx); 
+}
 
 void free_map(char **map)
 {

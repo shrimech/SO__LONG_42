@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 17:12:33 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/29 05:41:19 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/03/30 05:24:56 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
-# include "/usr/include/minilibx-linux/mlx.h"
+# include "/home/togo/Downloads/minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <unistd.h>
 
@@ -61,5 +61,10 @@ void		go_right(t_game *game);
 void		go_left(t_game *game);
 void		go_up(t_game *game);
 void		go_down(t_game *game);
+//bad trip with leaks
+void free_map(char **map);
+void free_game_map(t_game *game);
+void free_textures(t_game *game);
+void pause_mlx(t_game *game);
 
 #endif
