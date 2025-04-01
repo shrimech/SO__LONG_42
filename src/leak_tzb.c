@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 00:56:33 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/30 05:21:56 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/04/01 00:21:44 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void free_map(char **map)
 void free_game_map(t_game *game)
 {
     if (!game->map) return;
-    for (int i = 0; i < game->high; i++)
+    for (size_t i = 0; i < game->high; i++)
         free(game->map[i]);
     free(game->map);
 }

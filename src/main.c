@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 07:10:31 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/30 07:26:43 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/04/01 00:19:44 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int ac, char **av)
 		texture(&game);
 		render_map(&game);
 		mlx_key_hook(game.mlx_win, key_hook, &game);
-		//mlx_hook(game.mlx_win, 17, 0, ft_exit(&game), &game);
+		mlx_hook(game.mlx_win, 17, 0, ft_exit, &game);
 		mlx_loop(game.mlx);
 	}
 	else
