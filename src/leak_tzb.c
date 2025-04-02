@@ -6,43 +6,68 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 00:56:33 by shrimech          #+#    #+#             */
-/*   Updated: 2025/04/01 00:21:44 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/04/02 08:04:48 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void pause_mlx(t_game *game)
+void	pause_mlx(t_game *game)
 {
-    mlx_destroy_window(game->mlx, game->mlx_win);  // Destroy the window
-    mlx_destroy_display(game->mlx);          // Close the X11 connection
-    free(game->mlx); 
+	if (game->mlx_win)
+		mlx_destroy_window(game->mlx, game->mlx_win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
 }
 
-void free_map(char **map)
+void	free_map(char **map)
 {
-    int i = 0;
-    while (map[i])
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
-void free_game_map(t_game *game)
+void	free_game_map(t_game *game)
 {
-    if (!game->map) return;
-    for (size_t i = 0; i < game->high; i++)
-        free(game->map[i]);
-    free(game->map);
+	size_t	i;
+
+	i = 0;
+	if (!game->map)
+		return ;
+	while (i < game->high)
+	{
+		free(game->map[i]);
+		i++;
+	}
+	free(game->map);
 }
 
-void free_textures(t_game *game)
+void	free_textures(t_game *game)
 {
-    if (game->img_wall) mlx_destroy_image(game->mlx, game->img_wall);
-    if (game->img_player) mlx_destroy_image(game->mlx, game->img_player);
-    if (game->img_collectib) mlx_destroy_image(game->mlx, game->img_collectib);
-    if (game->img_exit) mlx_destroy_image(game->mlx, game->img_exit);
-    if (game->img_empty) mlx_destroy_image(game->mlx, game->img_empty);
+	if (game->img_wall)
+		mlx_destroy_image(game->mlx, game->img_wall);
+	if (game->img_player)
+		mlx_destroy_image(game->mlx, game->img_player);
+	if (game->img_collectib)
+		mlx_destroy_image(game->mlx, game->img_collectib);
+	if (game->img_exit)
+		mlx_destroy_image(game->mlx, game->img_exit);
+	if (game->img_empty)
+		mlx_destroy_image(game->mlx, game->img_empty);
+}
+
+void	free_if_i(t_game *game, int i)
+{
+	while (i >= 0)
+	{
+		free(game->map[i]);
+		i--;
+	}
+	free(game->map);
 }

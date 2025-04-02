@@ -6,7 +6,7 @@
 #    By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/01 16:57:08 by shrimech          #+#    #+#              #
-#    Updated: 2025/03/18 06:27:26 by shrimech         ###   ########.fr        #
+#    Updated: 2025/04/02 10:04:09 by shrimech         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,16 @@ OBJS = $(FUNCTIONS:.c=.o)
 NAME = libft.a
 all: $(NAME)
 $(NAME): $(OBJS)
-	ar rcs $@ $^
+	@ar rcs $@ $^
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ 
+	@$(CC) $(CFLAGS) -c $< -o $@ 
 
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all

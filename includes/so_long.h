@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 17:12:33 by shrimech          #+#    #+#             */
-/*   Updated: 2025/03/30 05:24:56 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/04/02 10:38:15 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
-# include "/home/togo/Downloads/minilibx-linux/mlx.h"
-# include <stdio.h>
+# include "/usr/include/minilibx-linux/minilibx-linux/mlx.h"
+#include "../ft_printf/ft_printf.h"
 # include <unistd.h>
 
 typedef struct s_game
@@ -48,7 +48,7 @@ size_t		gt_strlen(const char *str);
 void		hight_map(t_game *game, char *filename);
 int			check_map(char *av, t_game *game);
 void		find_player_pos(t_game *game);
-void		flood_fill(char **map, int x, int y, int i, int j);
+void		flood_fill(char **map, int x, int y, t_game *game);
 char		**duplicate_map(t_game *game);
 int			check_oporunity_to_col_exit(t_game *game);
 void		game_init(t_game *game);
@@ -66,5 +66,6 @@ void free_map(char **map);
 void free_game_map(t_game *game);
 void free_textures(t_game *game);
 void pause_mlx(t_game *game);
+void free_if_i(t_game *game, int i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 18:02:54 by shrimech          #+#    #+#             */
-/*   Updated: 2025/04/01 00:26:19 by shrimech         ###   ########.fr       */
+/*   Updated: 2025/04/02 10:40:43 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	go_up(t_game *game)
 	{
 		if (game->colect == 0 && game->count_moves++)
 		{
-			printf("\n*********************************\n");
-			printf("*        CONGRATULATIONS        *\n");
-			printf("*           YOU WON in %d!      *\n", game->count_moves);
-			printf("*********************************\n\n");
+			ft_printf("\n*********************************\n", 0);
+			ft_printf("*        CONGRATULATIONS        *\n", 0);
+			ft_printf("*           YOU WON in %d!      *\n", game->count_moves);
+			ft_printf("*********************************\n\n", 0);
 			exit((free_game_map(game), free_textures(game), pause_mlx(game),
-					0));
+					1));
 		}
 		game->exit_x = game->p_x - 1;
 		game->exit_y = game->p_y;
@@ -49,12 +49,12 @@ void	go_left(t_game *game)
 	{
 		if (game->colect == 0 && game->count_moves++)
 		{
-			printf("\n*********************************\n");
-			printf("*        CONGRATULATIONS        *\n");
-			printf("*           YOU WON in %d!      *\n", game->count_moves);
-			printf("*********************************\n\n");
+			ft_printf("\n*********************************\n");
+			ft_printf("*        CONGRATULATIONS        *\n");
+			ft_printf("*           YOU WON in %d!      *\n", game->count_moves);
+			ft_printf("*********************************\n\n");
 			exit((free_game_map(game), free_textures(game), pause_mlx(game),
-					0));
+					1));
 		}
 		game->exit_x = game->p_x;
 		game->exit_y = game->p_y - 1;
@@ -78,12 +78,12 @@ void	go_down(t_game *game)
 	{
 		if (game->colect == 0 && game->count_moves++)
 		{
-			printf("\n*********************************\n");
-			printf("*        CONGRATULATIONS        *\n");
-			printf("*           YOU WON in %d!      *\n", game->count_moves);
-			printf("*********************************\n\n");
+			ft_printf("\n*********************************\n");
+			ft_printf("*        CONGRATULATIONS        *\n");
+			ft_printf("*           YOU WON in %d!      *\n", game->count_moves);
+			ft_printf("*********************************\n\n");
 			exit((free_game_map(game), free_textures(game), pause_mlx(game),
-					0));
+					1));
 		}
 		game->exit_x = game->p_x + 1;
 		game->exit_y = game->p_y;
@@ -112,7 +112,7 @@ void	go_right(t_game *game)
 			printf("*           YOU WON in %d!      *\n", game->count_moves);
 			printf("*********************************\n\n");
 			exit((free_game_map(game), free_textures(game), pause_mlx(game),
-					0));
+					1));
 		}
 		game->exit_x = game->p_x;
 		game->exit_y = game->p_y + 1;
